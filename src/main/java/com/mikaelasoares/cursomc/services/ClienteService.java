@@ -60,7 +60,7 @@ public class ClienteService {
 			repo.deleteById(id);
 		}
 		catch(DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possível excluir porque há entidades relacionadas");
+			throw new DataIntegrityException("Não é possível excluir porque há pedidos relacionados");
 		}
 		
 	}
@@ -81,10 +81,11 @@ public class ClienteService {
 		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(), 
 				TipoCliente.toEnum(objDto.getTipo()));
 		
-		Optional <Cidade> cid = cidadeRepository.findById(objDto.getCidadeId());
+		/*Optional <Cidade> cid = cidadeRepository.findById(objDto.getCidadeId());
+		 * implementar o Cidade cid*/
 			
 		Endereco end = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), 
-				objDto.getBairro(), objDto.getCep(), cli, cid);
+				objDto.getBairro(), objDto.getCep(), cli, null);
 		cli.getEnderecos().add(end);
 		cli.getTelefones().add(objDto.getTelefone1());
 		if(objDto.getTelefone2()!=null) {

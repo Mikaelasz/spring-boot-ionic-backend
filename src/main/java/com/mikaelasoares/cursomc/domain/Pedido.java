@@ -68,11 +68,11 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
-	public Date getInstance() {
+	public Date getInstante() {
 		return instance;
 	}
 
-	public void setInstance(Date instance) {
+	public void setInstante(Date instance) {
 		this.instance = instance;
 	}
 
@@ -132,8 +132,4 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-
-
 }

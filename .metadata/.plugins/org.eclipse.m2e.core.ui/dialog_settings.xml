@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Mikaela\Cursos\spring-boot-ionic-backend"/>
 			<item value="C:\temp\ws\cursomc"/>
 		</list>
 		<list key="projectNameTemplate">

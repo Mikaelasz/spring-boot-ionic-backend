@@ -1,6 +1,9 @@
 package com.mikaelasoares.cursomc.domain;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Optional;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -49,10 +52,8 @@ public class ItemPedido implements Serializable {
 	public Produto getProduto() {
 		return id.getProduto();
 	}
-	
-	public void setProduto(Produto produto) {
-		id.setProduto(produto);
-	}
+
+	public void setProduto(Produto produto) { id.setProduto(produto); }
 	
 	public ItemPedidoPK getId() {
 		return id;
@@ -86,6 +87,8 @@ public class ItemPedido implements Serializable {
 		this.preco = preco;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -110,10 +113,19 @@ public class ItemPedido implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 
+	@Override
+	public String toString() {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		StringBuilder builder = new StringBuilder();
+		builder.append(getProduto().getNome());
+		builder.append(", Qte: ");
+		builder.append(getQuantidade());
+		builder.append(", Preço unitário: ");
+		builder.append(nf.format(getPreco()));
+		builder.append(", Subtotal: ");
+		builder.append(nf.format(getSubTotal()));
+		builder.append("\n");
+		return builder.toString();
+	}
 }

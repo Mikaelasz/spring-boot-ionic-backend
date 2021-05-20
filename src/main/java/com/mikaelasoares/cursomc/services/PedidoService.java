@@ -64,14 +64,9 @@ public class PedidoService {
 			ip.setPreco(p.get().getPreco());
 
 			ip.setPedido(obj);
-
-
-			/*ip.setProduto(produtoService.find(ip.getProduto().getId()));
-			ip.setPreco(ip.getProduto().getPreco());
-			ip.setPedido(obj);*/
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		emailService.sendOrderConfirmationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 

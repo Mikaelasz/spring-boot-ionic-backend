@@ -3,6 +3,9 @@ package com.mikaelasoares.cursomc.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.mikaelasoares.cursomc.domain.enums.Perfil;
+import com.mikaelasoares.cursomc.security.UserSS;
+import com.mikaelasoares.cursomc.services.exceptions.AuthorizationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -37,8 +40,16 @@ public class ClienteService {
 	private CidadeRepository cidadeRepository;
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+
+
 	
 	public Cliente find(Integer id) {
+
+		UserSS user = UserService.authenticated();
+		if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
+			throw  new AuthorizationException("Acesso negado");
+		}
+
 		Optional<Cliente> obj = repo.findById(id);
 		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(

@@ -1,5 +1,6 @@
 package com.mikaelasoares.cursomc.services;
 
+import com.mikaelasoares.cursomc.domain.Cliente;
 import com.mikaelasoares.cursomc.domain.Pedido;
 import org.springframework.mail.SimpleMailMessage;
 
@@ -15,4 +16,5 @@ public interface EmailService {
 
     void sendHtmlEmail(MimeMessage msg);
 
+    void sendNewPasswordEmail(Cliente cliente, String newPass);
 }

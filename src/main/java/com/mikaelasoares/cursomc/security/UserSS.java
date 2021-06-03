@@ -4,14 +4,13 @@ import com.mikaelasoares.cursomc.domain.enums.Perfil;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class UserSS implements UserDetails {
-    private static final long seriaVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     private Integer id;
     private String email;
@@ -19,7 +18,6 @@ public class UserSS implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserSS(){
-
     }
 
     public UserSS(Integer id, String email, String senha, Set<Perfil> perfis) {

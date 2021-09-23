@@ -1,6 +1,6 @@
 package com.mikaelasoares.cursomc.resources.exception;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.mikaelasoares.cursomc.services.exceptions.DataIntegrityException;
 import com.mikaelasoares.cursomc.services.exceptions.ObjectNotFoundException;
+
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
